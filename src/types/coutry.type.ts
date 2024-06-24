@@ -1,4 +1,4 @@
-export type Countries = {
+export type Country = {
   name: CountryName;
   tld: string[];
   cca2: string;
