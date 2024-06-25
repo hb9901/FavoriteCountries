@@ -3,11 +3,11 @@ import { Country } from "../types/coutry.type";
 
 class CountryAPI {
   #axios;
-  constructor(axios:AxiosInstance) {
+  constructor(axios: AxiosInstance) {
     this.#axios = axios;
   }
 
-  async getCountries(){
+  async getCountries(): Promise<Country[]> {
     const path = "/all";
 
     const response = await this.#axios.get<Country[]>(path);
