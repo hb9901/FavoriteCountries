@@ -1,10 +1,10 @@
-import { Country } from "../../types/coutry.type";
+import { TCountry } from "../../types/coutry.type";
 import Card from "../Card/Card";
 
 interface CardsProps {
   title: string;
-  countries: Country[];
-  handleCountryClick: (country: Country) => void;
+  countries: TCountry[];
+  handleCountryClick: (country: TCountry) => void;
 }
 
 function Cards({ title, countries, handleCountryClick }: CardsProps) {
@@ -15,8 +15,8 @@ function Cards({ title, countries, handleCountryClick }: CardsProps) {
         {countries?.map((country, index) => (
           <Card
             handleCountryClick={() => handleCountryClick(country)}
-            flag={country.flags.png}
-            nation={country.name.common}
+            flags={country.flags}
+            name={country.name}
             capital={country.capital}
             key={index}
           />

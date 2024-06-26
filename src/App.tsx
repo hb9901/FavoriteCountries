@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "./api/api";
 import Cards from "./components/Cards";
-import { Country } from "./types/coutry.type";
+import { TCountry } from "./types/coutry.type";
 
 function App() {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
+  const [countries, setCountries] = useState<TCountry[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<TCountry[]>([]);
 
   useEffect(() => {
     async function getCountriesAPI() {
@@ -16,14 +16,14 @@ function App() {
     getCountriesAPI();
   }, []);
 
-  const handleSelectedCountryClick = (country: Country) => {
+  const handleSelectedCountryClick = (country: TCountry) => {
     setCountries((prev) => [...prev, country]);
     setSelectedCountries((prev) =>
       prev.filter((prevCountry) => prevCountry !== country)
     );
   };
 
-  const handleCountryClick = (country: Country) => {
+  const handleCountryClick = (country: TCountry) => {
     setSelectedCountries((prev) => [...prev, country]);
     setCountries((prev) =>
       prev.filter((prevCountry) => prevCountry !== country)
