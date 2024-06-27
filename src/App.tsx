@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "./api/api";
-import Cards from "./components/Cards";
+import Cards from "./components/CountryList";
 import { TCountry } from "./types/coutry.type";
 
 function App() {

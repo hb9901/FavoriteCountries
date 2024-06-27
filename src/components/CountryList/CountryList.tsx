@@ -1,5 +1,5 @@
 import { TCountry } from "../../types/coutry.type";
-import Card from "../Card/Card";
+import Card from "../CountryCard/CountryCard";
 
 interface CardsProps {
   title: string;
