@@ -16,10 +16,8 @@ export type TCountryEtc = {
   altSpellings: string[];
   region: string;
   subregion: string;
-  langauges: {
-    fra: string;
-  };
-  translations: TTranslations;
+  langauges: { [key: string]: string };
+  translations: { [key: string]: TTranslation };
   latlng: number[];
   landlocked: boolean;
   area: number;
@@ -50,17 +48,17 @@ export type TCountryEtc = {
 export type TCountryName = {
   common: string;
   official: string;
-  nativeName: TTranslations;
+  nativeName: { [key: string]: TTranslation };
 };
 
 export type TFlags = {
-    png: string;
-    svg: string;
-    alt?: string;
-  }
+  png: string;
+  svg: string;
+  alt?: string;
+};
 
 export type TCurrencies = {
-  XPF: {
+  [key: string]: {
     name: string;
     symborl: string;
   };
@@ -69,34 +67,6 @@ export type TCurrencies = {
 export type TIdd = {
   root: string;
   suffixes: string[];
-};
-
-export type TTranslations = {
-  ara?: TTranslation;
-  bre?: TTranslation;
-  ces?: TTranslation;
-  cym?: TTranslation;
-  deu?: TTranslation;
-  est?: TTranslation;
-  fin?: TTranslation;
-  fra?: TTranslation;
-  hrv?: TTranslation;
-  hun?: TTranslation;
-  ita?: TTranslation;
-  jpn?: TTranslation;
-  kor?: TTranslation;
-  nld?: TTranslation;
-  per?: TTranslation;
-  pol?: TTranslation;
-  por?: TTranslation;
-  rus?: TTranslation;
-  slk?: TTranslation;
-  spa?: TTranslation;
-  srp?: TTranslation;
-  swe?: TTranslation;
-  tur?: TTranslation;
-  urd?: TTranslation;
-  zho?: TTranslation;
 };
 
 export type TTranslation = {
