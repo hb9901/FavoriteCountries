@@ -16,6 +16,7 @@ export type TCountryEtc = {
   altSpellings: string[];
   region: string;
   subregion: string;
+  
   langauges: { [key: string]: string };
   translations: { [key: string]: TTranslation };
   latlng: number[];
