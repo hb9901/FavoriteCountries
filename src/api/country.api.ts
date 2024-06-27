@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import { Country } from "../types/coutry.type";
+import { TCountry } from "../types/coutry.type";
 
 class CountryAPI {
   #axios;
@@ -7,10 +7,10 @@ class CountryAPI {
     this.#axios = axios;
   }
 
-  async getCountries(): Promise<Country[]> {
+  async getCountries(): Promise<TCountry[]> {
     const path = "/all";
 
-    const response = await this.#axios.get<Country[]>(path);
+    const response = await this.#axios.get<TCountry[]>(path);
     const data = response.data;
 
     return data;

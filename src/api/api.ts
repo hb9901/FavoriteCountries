@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import CountryAPI from "./country.api.ts";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+const BASE_URL = "https://restcountries.com/v3.1";
 
 class API {
   private axios: AxiosInstance;
