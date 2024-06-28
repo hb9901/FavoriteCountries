@@ -1,46 +1,70 @@
 import { useEffect, useState } from "react";
 import api from "./api/api";
-import Cards from "./components/CountryList";
-import { TCountry } from "./types/coutry.type";
+import CountryList from "./components/CountryList";
+import { TExtendedCountry } from "./types/coutry.type";
 
 function App() {
-  const [countries, setCountries] = useState<TCountry[]>([]);
-  const [selectedCountries, setSelectedCountries] = useState<TCountry[]>([]);
+  const [countries, setCountries] = useState<TExtendedCountry[]>([]);
 
   useEffect(() => {
     async function getCountriesAPI() {
       const countries = await api.country.getCountries();
-      setCountries(countries);
+      const newCountries = countries.map((country) => {
+        const newCountry = {
+          ...country,
+          isSelected: false,
+        };
+        return newCountry;
+      });
+      setCountries(newCountries);
     }
 
     getCountriesAPI();
   }, []);
 
-  const handleSelectedCountryClick = (country: TCountry) => {
-    setCountries((prev) => [...prev, country]);
-    setSelectedCountries((prev) =>
-      prev.filter((prevCountry) => prevCountry !== country)
+  const handleSelectedCountryClick = (country: TExtendedCountry) => {
+    setCountries((prevCountries) =>
+      prevCountries.map((prevCountry) => {
+        if (prevCountry.name.common === country.name.common) {
+          return {
+            ...prevCountry,
+            isSelected: false,
+          };
+        } else {
+          return prevCountry;
+        }
+      })
     );
   };
 
-  const handleCountryClick = (country: TCountry) => {
-    setSelectedCountries((prev) => [...prev, country]);
-    setCountries((prev) =>
-      prev.filter((prevCountry) => prevCountry !== country)
+  const handleCountryClick = (country: TExtendedCountry) => {
+    setCountries((prevCountries) =>
+      prevCountries.map((prevCountry) => {
+        if (prevCountry.name.common === country.name.common) {
+          return {
+            ...prevCountry,
+            isSelected: true,
+          };
+        } else {
+          return prevCountry;
+        }
+      })
     );
   };
 
   return (
     <div className="container mx-auto p-6 flex flex-col justify-center items-center">
-      <Cards
+      <CountryList
         title="Favorite Countries"
-        countries={selectedCountries}
+        countries={countries}
+        isSelected={true}
         handleCountryClick={handleSelectedCountryClick}
       />
 
-      <Cards
+      <CountryList
         title="Countries"
         countries={countries}
+        isSelected={false}
         handleCountryClick={handleCountryClick}
       />
     </div>

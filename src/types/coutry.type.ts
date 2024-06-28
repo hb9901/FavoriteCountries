@@ -16,7 +16,7 @@ export type TCountryEtc = {
   altSpellings: string[];
   region: string;
   subregion: string;
-  
+
   langauges: { [key: string]: string };
   translations: { [key: string]: TTranslation };
   latlng: number[];
@@ -45,6 +45,10 @@ export type TCountryEtc = {
     regex: string;
   };
 };
+
+export type TExtendedCountry<IsCard extends boolean = false> = {
+  isSelected: boolean;
+} & TCountry<IsCard>;
 
 export type TCountryName = {
   common: string;
