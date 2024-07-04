@@ -5,6 +5,10 @@ import { TExtendedCountry } from "./types/coutry.type";
 
 function App() {
   const [countries, setCountries] = useState<TExtendedCountry[]>([]);
+  const selectedCountries = countries.filter((country) => country.isSelected);
+  const notSelectedCountries = countries.filter(
+    (country) => !country.isSelected
+  );
 
   useEffect(() => {
     async function getCountriesAPI() {
@@ -56,15 +60,13 @@ function App() {
     <div className="container mx-auto p-6 flex flex-col justify-center items-center">
       <CountryList
         title="Favorite Countries"
-        countries={countries}
-        isSelected={true}
+        countries={selectedCountries}
         handleCountryClick={handleSelectedCountryClick}
       />
 
       <CountryList
         title="Countries"
-        countries={countries}
-        isSelected={false}
+        countries={notSelectedCountries}
         handleCountryClick={handleCountryClick}
       />
     </div>
